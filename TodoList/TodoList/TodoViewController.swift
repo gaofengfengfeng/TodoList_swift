@@ -29,8 +29,12 @@ class TodoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.tintColor = UIColor.white
         searchController.searchBar.searchBarStyle = .minimal
+        searchController.searchBar.showsCancelButton = true;
+        searchController.searchBar.barTintColor = UIColor.blue
         
         self.headerView.addSubview(searchController.searchBar)
+        
+        print(searchController.isActive)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -134,7 +138,7 @@ class TodoViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func searchFilter(text: String) {
         if text == "" {
             self.searchResults = ints
-            return 
+            return
         }
         self.searchResults = ints.filter({ (movie) -> Bool in
             return movie.localizedCaseInsensitiveContains(text)
