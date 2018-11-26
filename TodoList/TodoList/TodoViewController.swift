@@ -22,8 +22,11 @@ class TodoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
+        tableView.rowHeight = 110
         // 注册cell
-        self.tableView.register(TableViewCell.self, forCellReuseIdentifier: "cell")
+        self.tableView.register(UINib(nibName:"NewCellTableViewCell", bundle:nil), forCellReuseIdentifier:"cell")
+        //self.tableView.register(TableViewCell.self, forCellReuseIdentifier: "cell")
+        //self.tableView.register(NewCellTableViewCell.self, forCellReuseIdentifier: "cell")
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -83,8 +86,14 @@ class TodoViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
-        cell.textLabel?.text = ints[indexPath.row]
+//        let cell : CustomTableViewCell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell") as! CustomTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! NewCellTableViewCell
+        //cell.textLabel?.text = ints[indexPath.row]
+        cell.iconImage.image = UIImage(named: "statics")
+        cell.titleLable.text = ints[indexPath.row] + "事项"
+        cell.contentLabel.text = "内容"
+        //cell.tiltleLabel.text = "事项"
+        //cell.contentLabel.text = "内容"
         return cell
     }
     
