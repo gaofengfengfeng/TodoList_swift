@@ -79,10 +79,10 @@
             </objects>
             <point key="canvasLocation" x="2014.4927536231885" y="132.58928571428572"/>
         </scene>
-        <!--View Controller-->
+        <!--Add View Controller-->
         <scene sceneID="sH2-aE-2BU">
             <objects>
-                <viewController id="TRK-GC-P1i" customClass="ViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="TRK-GC-P1i" customClass="AddViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rkf-m1-ypa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -130,7 +130,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="确认"/>
                                 <connections>
-                                    <action selector="doneBtn:" destination="TRK-GC-P1i" eventType="touchUpInside" id="vDe-SG-Hx6"/>
+                                    <action selector="doneBtn:" destination="TRK-GC-P1i" eventType="touchUpInside" id="Egy-lu-pHS"/>
                                     <segue destination="BYZ-38-t0r" kind="show" id="a6n-aF-XJU"/>
                                 </connections>
                             </button>
@@ -139,12 +139,12 @@
                         <viewLayoutGuide key="safeArea" id="W9d-MR-JaJ"/>
                     </view>
                     <connections>
-                        <outlet property="dataPicker" destination="4ZQ-L2-vZe" id="Q8S-oJ-9Qm"/>
-                        <outlet property="image1" destination="r7u-BA-zj4" id="zbt-RX-jEa"/>
-                        <outlet property="image2" destination="cfo-KD-zgi" id="FpU-Ru-sKR"/>
-                        <outlet property="image3" destination="ZgU-qu-lkg" id="jd7-ZE-h2v"/>
-                        <outlet property="image4" destination="5T7-rg-dLS" id="hp1-V7-2B6"/>
-                        <outlet property="todoContent" destination="fdW-tq-Jzp" id="lal-LZ-SVr"/>
+                        <outlet property="dataPicker" destination="4ZQ-L2-vZe" id="a2h-MA-Yj0"/>
+                        <outlet property="image1" destination="r7u-BA-zj4" id="8mS-5b-nCP"/>
+                        <outlet property="image2" destination="cfo-KD-zgi" id="yxy-yX-16a"/>
+                        <outlet property="image3" destination="ZgU-qu-lkg" id="ofI-qe-5dj"/>
+                        <outlet property="image4" destination="5T7-rg-dLS" id="dHv-kE-5CG"/>
+                        <outlet property="todoContent" destination="fdW-tq-Jzp" id="SKF-W6-zIc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7hF-CS-lA8" userLabel="First Responder" sceneMemberID="firstResponder"/>

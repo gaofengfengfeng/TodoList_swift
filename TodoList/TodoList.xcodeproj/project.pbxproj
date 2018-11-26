@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		67130E4921AC3ED9000583BC /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67130E4821AC3ED9000583BC /* AddViewController.swift */; };
 		67380C3121AB880000288291 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67380C3021AB880000288291 /* AppDelegate.swift */; };
 		67380C3321AB880000288291 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67380C3221AB880000288291 /* ViewController.swift */; };
 		67380C3621AB880000288291 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67380C3421AB880000288291 /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		67130E4821AC3ED9000583BC /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		67380C2D21AB880000288291 /* TodoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67380C3021AB880000288291 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		67380C3221AB880000288291 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				67380C5E21AB91FD00288291 /* TodoViewController.swift */,
 				67380C6821ABC13100288291 /* NewCellTableViewCell.swift */,
 				67380C6921ABC13100288291 /* NewCellTableViewCell.xib */,
+				67130E4821AC3ED9000583BC /* AddViewController.swift */,
 			);
 			path = TodoList;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67130E4921AC3ED9000583BC /* AddViewController.swift in Sources */,
 				67380C3321AB880000288291 /* ViewController.swift in Sources */,
 				67380C5F21AB91FD00288291 /* TodoViewController.swift in Sources */,
 				67380C6A21ABC13100288291 /* NewCellTableViewCell.swift in Sources */,
