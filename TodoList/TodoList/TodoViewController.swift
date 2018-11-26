@@ -8,9 +8,13 @@
 
 import UIKit
 
-class TodoViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    var ints : [String] = ["一","二","三","四","五","六","七","八","九","十"]
+class TodoViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating {
     
+    var ints : [String] = ["1","2","3","4","5","6","7","8","9","10"]
+    var searchResults : [String] = []
+    var searchController : UISearchController!
+    
+    @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var editBtn: UIBarButtonItem!
     @IBAction func editItem(_ sender: UIBarButtonItem) {
@@ -19,6 +23,15 @@ class TodoViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.tintColor = UIColor.white
+        searchController.searchBar.searchBarStyle = .minimal
+        
+        self.headerView.addSubview(searchController.searchBar)
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
@@ -46,7 +59,8 @@ class TodoViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ints.count
+        return searchController.isActive ? searchResults.count : ints.count
+        //return ints.count
     }
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -89,8 +103,11 @@ class TodoViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //        let cell : CustomTableViewCell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell") as! CustomTableViewCell
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! NewCellTableViewCell
         //cell.textLabel?.text = ints[indexPath.row]
+        
+        let movie = searchController.isActive ? searchResults[indexPath.row] : ints[indexPath.row]
+        
         cell.iconImage.image = UIImage(named: "statics")
-        cell.titleLable.text = ints[indexPath.row] + "事项"
+        cell.titleLable.text = movie + "事项"
         cell.contentLabel.text = "内容"
         //cell.tiltleLabel.text = "事项"
         //cell.contentLabel.text = "内容"
@@ -112,6 +129,24 @@ class TodoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         ints.remove(at: fromRow)
         ints.insert(int, at: toRow)
+    }
+    
+    func searchFilter(text: String) {
+        if text == "" {
+            self.searchResults = ints
+            return 
+        }
+        self.searchResults = ints.filter({ (movie) -> Bool in
+            return movie.localizedCaseInsensitiveContains(text)
+        })
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if var text = searchController.searchBar.text {
+            text = text.trimmingCharacters(in: .whitespaces)
+            searchFilter(text: text)
+            tableView.reloadData()
+        }
     }
 }
 
