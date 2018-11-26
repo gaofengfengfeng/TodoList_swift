@@ -10,7 +10,9 @@ import UIKit
 
 class TodoViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating {
     
+    // mock假数据
     var ints : [String] = ["1","2","3","4","5","6","7","8","9","10"]
+    // 存储search之后的数据
     var searchResults : [String] = []
     var searchController : UISearchController!
     
@@ -33,8 +35,6 @@ class TodoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         searchController.searchBar.barTintColor = UIColor.blue
         
         self.headerView.addSubview(searchController.searchBar)
-        
-        print(searchController.isActive)
         
         tableView.delegate = self
         tableView.dataSource = self

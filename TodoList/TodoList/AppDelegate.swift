@@ -7,16 +7,56 @@
 //
 
 import UIKit
+import CoreData
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (accepted, error) in
+            if !accepted {
+                print("\(error!)")
+            }
+        }
+        
+        let action = UNNotificationAction(identifier: "remind", title: "remind me later", options: [])
+        let category = UNNotificationCategory(identifier: "normal", actions: [action], intentIdentifiers: [], options: [])
+        UNUserNotificationCenter.current().setNotificationCategories([category])
         // Override point for customization after application launch.
         return true
+    }
+    
+    func settingNotification(date: Date) {
+        UNUserNotificationCenter.current().delegate = self
+        let calendar = Calendar(identifier: .gregorian)
+        let components = calendar.dateComponents(in: .current, from: date)
+        let newComponents = DateComponents.init(calendar: calendar, timeZone: .current, month: components.month, day: components.day, hour: components.hour, minute: components.minute)
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: newComponents, repeats: false)
+        let content = UNMutableNotificationContent()
+        content.title = "快回来看奥特曼啦！"
+        content.body = "捷德奥特曼第20集现已更新。"
+        content.sound = UNNotificationSound.default
+        content.categoryIdentifier = "normal"
+        
+        let request = UNNotificationRequest(identifier: "textNotification", content: content, trigger: trigger)
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        UNUserNotificationCenter.current().add(request) { (error) in
+            if let error = error {
+                print("\(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        if response.actionIdentifier == "remind" {
+            let newDate = Date(timeInterval: 60, since: Date())
+            settingNotification(date: newDate)
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

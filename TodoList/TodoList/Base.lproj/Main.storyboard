@@ -19,14 +19,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sdD-w9-n85" userLabel="header view">
-                                <rect key="frame" x="5" y="88" width="414" height="43"/>
+                                <rect key="frame" x="5" y="44" width="414" height="43"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="uui-wW-XMt"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BEC-3h-RK9">
-                                <rect key="frame" x="10" y="141" width="394" height="662"/>
+                                <rect key="frame" x="10" y="97" width="394" height="755"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -63,7 +63,11 @@
                                 <action selector="editItem:" destination="BYZ-38-t0r" id="mTk-c8-csS"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="94c-Z9-Q4g"/>
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="94c-Z9-Q4g">
+                            <connections>
+                                <segue destination="TRK-GC-P1i" kind="show" id="DyG-WW-uQc"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="editBtn" destination="7dr-fS-VQd" id="4AH-cf-7f0"/>
@@ -74,6 +78,78 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2014.4927536231885" y="132.58928571428572"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="sH2-aE-2BU">
+            <objects>
+                <viewController id="TRK-GC-P1i" customClass="ViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rkf-m1-ypa">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="animal_selected" translatesAutoresizingMaskIntoConstraints="NO" id="r7u-BA-zj4">
+                                <rect key="frame" x="33" y="101" width="81" height="85"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="todo" translatesAutoresizingMaskIntoConstraints="NO" id="5T7-rg-dLS">
+                                <rect key="frame" x="300" y="101" width="81" height="85"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="statics" translatesAutoresizingMaskIntoConstraints="NO" id="ZgU-qu-lkg">
+                                <rect key="frame" x="211" y="101" width="81" height="85"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="finished" translatesAutoresizingMaskIntoConstraints="NO" id="cfo-KD-zgi">
+                                <rect key="frame" x="122" y="101" width="81" height="85"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="待办：" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jQe-7Q-NSG">
+                                <rect key="frame" x="33" y="245" width="81" height="54"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fdW-tq-Jzp">
+                                <rect key="frame" x="122" y="257" width="259" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="4ZQ-L2-vZe">
+                                <rect key="frame" x="20" y="383" width="374" height="161"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <date key="date" timeIntervalSinceReferenceDate="564925710.73749495">
+                                    <!--2018-11-26 11:48:30 +0000-->
+                                </date>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bVS-ep-63r">
+                                <rect key="frame" x="153" y="656" width="108" height="87"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="确认"/>
+                                <connections>
+                                    <action selector="doneBtn:" destination="TRK-GC-P1i" eventType="touchUpInside" id="vDe-SG-Hx6"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="a6n-aF-XJU"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="W9d-MR-JaJ"/>
+                    </view>
+                    <connections>
+                        <outlet property="dataPicker" destination="4ZQ-L2-vZe" id="Q8S-oJ-9Qm"/>
+                        <outlet property="image1" destination="r7u-BA-zj4" id="zbt-RX-jEa"/>
+                        <outlet property="image2" destination="cfo-KD-zgi" id="FpU-Ru-sKR"/>
+                        <outlet property="image3" destination="ZgU-qu-lkg" id="jd7-ZE-h2v"/>
+                        <outlet property="image4" destination="5T7-rg-dLS" id="hp1-V7-2B6"/>
+                        <outlet property="todoContent" destination="fdW-tq-Jzp" id="lal-LZ-SVr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7hF-CS-lA8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2878.2608695652175" y="136.60714285714286"/>
         </scene>
         <!--待办-->
         <scene sceneID="geh-2Z-p5A">
@@ -142,20 +218,14 @@
                     <view key="view" contentMode="scaleToFill" id="CfT-y6-JbE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PageA2" translatesAutoresizingMaskIntoConstraints="NO" id="tCk-xR-J16">
-                                <rect key="frame" x="16" y="31" width="343" height="575"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="1Go-MV-mv5"/>
                     </view>
-                    <navigationItem key="navigationItem" id="zOT-XA-fLd"/>
+                    <navigationItem key="navigationItem" title="已完成" id="zOT-XA-fLd"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XMU-iy-uac" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2015.2" y="807.34632683658174"/>
+            <point key="canvasLocation" x="2014.4927536231885" y="806.91964285714278"/>
         </scene>
         <!--已完成-->
         <scene sceneID="4eq-D7-qJW">
@@ -198,8 +268,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="PageA2" width="810" height="1440"/>
         <image name="PageB1" width="810" height="1440"/>
+        <image name="animal_selected" width="32" height="32"/>
         <image name="finished" width="32" height="32"/>
         <image name="finished_selected" width="32" height="32"/>
         <image name="statics" width="32" height="32"/>
@@ -207,4 +277,7 @@
         <image name="todo" width="32" height="32"/>
         <image name="todo_selected" width="32" height="32"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="a6n-aF-XJU"/>
+    </inferredMetricsTieBreakers>
 </document>
