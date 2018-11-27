@@ -137,7 +137,6 @@ class TodoViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // 处理cell的点击事件
-        print(indexPath)
         self.tableView!.deselectRow(at: indexPath, animated: true)
         let itemString = self.ints[indexPath.row]
         self.performSegue(withIdentifier: "ShowDetailView", sender: itemString)
