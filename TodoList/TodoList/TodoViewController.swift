@@ -19,7 +19,7 @@ class TodoViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var editBtn: UIBarButtonItem!
-    @IBAction func editItem(_ sender: UIBarButtonItem) {
+    @IBAction func editItem(_ sender: Any) {
         editAction()
     }
     
@@ -133,6 +133,22 @@ class TodoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         ints.remove(at: fromRow)
         ints.insert(int, at: toRow)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // 处理cell的点击事件
+        print(indexPath)
+        self.tableView!.deselectRow(at: indexPath, animated: true)
+        let itemString = self.ints[indexPath.row]
+        self.performSegue(withIdentifier: "ShowDetailView", sender: itemString)
+    }
+    
+    //在这个方法中给新页面传递参数
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDetailView"{
+            let controller = segue.destination as! ModifyViewController
+            controller.itemString = sender as? String
+        }
     }
     
     func searchFilter(text: String) {

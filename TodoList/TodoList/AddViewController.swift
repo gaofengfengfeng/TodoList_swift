@@ -22,10 +22,9 @@ class AddViewController: UIViewController {
     
     @IBAction func doneBtn(_ sender: Any) {
         content = todoContent.text!
-        print(content)
         let date = dataPicker.date
         if let delegate = UIApplication.shared.delegate as? AppDelegate {
-            delegate.settingNotification(date: date)
+            delegate.settingNotification(date: date, body: content)
         }
     }
     

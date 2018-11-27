@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		67130E4921AC3ED9000583BC /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67130E4821AC3ED9000583BC /* AddViewController.swift */; };
+		67130E4B21ACCE90000583BC /* DoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67130E4A21ACCE90000583BC /* DoneViewController.swift */; };
+		67130E4D21ACD300000583BC /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67130E4C21ACD2FF000583BC /* Model.swift */; };
+		67130E5721AD41AF000583BC /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67130E5421AD4156000583BC /* Charts.framework */; };
+		67130E5821AD41AF000583BC /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 67130E5421AD4156000583BC /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		67130E5D21AD41E9000583BC /* StaticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67130E5C21AD41E9000583BC /* StaticsViewController.swift */; };
+		67130E5F21AD7314000583BC /* ModifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67130E5E21AD7314000583BC /* ModifyViewController.swift */; };
 		67380C3121AB880000288291 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67380C3021AB880000288291 /* AppDelegate.swift */; };
 		67380C3321AB880000288291 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67380C3221AB880000288291 /* ViewController.swift */; };
 		67380C3621AB880000288291 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67380C3421AB880000288291 /* Main.storyboard */; };
@@ -21,6 +27,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		67130E5321AD4156000583BC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67130E4E21AD4156000583BC /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 65AD9E95D9ED4DC0BD73A743;
+			remoteInfo = Charts;
+		};
+		67130E5521AD4156000583BC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67130E4E21AD4156000583BC /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1CBBC58C6CE1EBEE9852CE41;
+			remoteInfo = ChartsTests;
+		};
+		67130E5921AD41AF000583BC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67130E4E21AD4156000583BC /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A58A4ED274A941CA248EA921;
+			remoteInfo = Charts;
+		};
 		67380C4221AB880200288291 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 67380C2521AB880000288291 /* Project object */;
@@ -37,8 +64,27 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		67130E5B21AD41AF000583BC /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				67130E5821AD41AF000583BC /* Charts.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		67130E4821AC3ED9000583BC /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		67130E4A21ACCE90000583BC /* DoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneViewController.swift; sourceTree = "<group>"; };
+		67130E4C21ACD2FF000583BC /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		67130E4E21AD4156000583BC /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = ../../Charts/Charts.xcodeproj; sourceTree = "<group>"; };
+		67130E5C21AD41E9000583BC /* StaticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticsViewController.swift; sourceTree = "<group>"; };
+		67130E5E21AD7314000583BC /* ModifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyViewController.swift; sourceTree = "<group>"; };
 		67380C2D21AB880000288291 /* TodoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67380C3021AB880000288291 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		67380C3221AB880000288291 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67130E5721AD41AF000583BC /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,9 +129,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		67130E4F21AD4156000583BC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				67130E5421AD4156000583BC /* Charts.framework */,
+				67130E5621AD4156000583BC /* ChartsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		67380C2421AB87FF00288291 = {
 			isa = PBXGroup;
 			children = (
+				67130E4E21AD4156000583BC /* Charts.xcodeproj */,
 				67380C2F21AB880000288291 /* TodoList */,
 				67380C4421AB880200288291 /* TodoListTests */,
 				67380C4F21AB880200288291 /* TodoListUITests */,
@@ -115,6 +172,10 @@
 				67380C6821ABC13100288291 /* NewCellTableViewCell.swift */,
 				67380C6921ABC13100288291 /* NewCellTableViewCell.xib */,
 				67130E4821AC3ED9000583BC /* AddViewController.swift */,
+				67130E4A21ACCE90000583BC /* DoneViewController.swift */,
+				67130E4C21ACD2FF000583BC /* Model.swift */,
+				67130E5C21AD41E9000583BC /* StaticsViewController.swift */,
+				67130E5E21AD7314000583BC /* ModifyViewController.swift */,
 			);
 			path = TodoList;
 			sourceTree = "<group>";
@@ -147,10 +208,12 @@
 				67380C2921AB880000288291 /* Sources */,
 				67380C2A21AB880000288291 /* Frameworks */,
 				67380C2B21AB880000288291 /* Resources */,
+				67130E5B21AD41AF000583BC /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				67130E5A21AD41AF000583BC /* PBXTargetDependency */,
 			);
 			name = TodoList;
 			productName = TodoList;
@@ -227,6 +290,12 @@
 			mainGroup = 67380C2421AB87FF00288291;
 			productRefGroup = 67380C2E21AB880000288291 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 67130E4F21AD4156000583BC /* Products */;
+					ProjectRef = 67130E4E21AD4156000583BC /* Charts.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				67380C2C21AB880000288291 /* TodoList */,
@@ -235,6 +304,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		67130E5421AD4156000583BC /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 67130E5321AD4156000583BC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		67130E5621AD4156000583BC /* ChartsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsTests.xctest;
+			remoteRef = 67130E5521AD4156000583BC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		67380C2B21AB880000288291 /* Resources */ = {
@@ -269,10 +355,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67130E5D21AD41E9000583BC /* StaticsViewController.swift in Sources */,
+				67130E4D21ACD300000583BC /* Model.swift in Sources */,
 				67130E4921AC3ED9000583BC /* AddViewController.swift in Sources */,
 				67380C3321AB880000288291 /* ViewController.swift in Sources */,
 				67380C5F21AB91FD00288291 /* TodoViewController.swift in Sources */,
 				67380C6A21ABC13100288291 /* NewCellTableViewCell.swift in Sources */,
+				67130E4B21ACCE90000583BC /* DoneViewController.swift in Sources */,
+				67130E5F21AD7314000583BC /* ModifyViewController.swift in Sources */,
 				67380C3121AB880000288291 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,6 +386,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		67130E5A21AD41AF000583BC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Charts;
+			targetProxy = 67130E5921AD41AF000583BC /* PBXContainerItemProxy */;
+		};
 		67380C4321AB880200288291 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 67380C2C21AB880000288291 /* TodoList */;
@@ -447,6 +542,7 @@
 		67380C5621AB880200288291 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = TodoList/Info.plist;
@@ -464,6 +560,7 @@
 		67380C5721AB880200288291 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = TodoList/Info.plist;

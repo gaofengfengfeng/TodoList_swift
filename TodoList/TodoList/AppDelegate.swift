@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         return true
     }
     
-    func settingNotification(date: Date) {
+    func settingNotification(date: Date, body: String) {
         UNUserNotificationCenter.current().delegate = self
         let calendar = Calendar(identifier: .gregorian)
         let components = calendar.dateComponents(in: .current, from: date)
@@ -38,8 +38,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: newComponents, repeats: false)
         let content = UNMutableNotificationContent()
-        content.title = "快回来看奥特曼啦！"
-        content.body = "捷德奥特曼第20集现已更新。"
+        content.title = "事项提示"
+        content.body = body
         content.sound = UNNotificationSound.default
         content.categoryIdentifier = "normal"
         
@@ -55,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         if response.actionIdentifier == "remind" {
             let newDate = Date(timeInterval: 60, since: Date())
-            settingNotification(date: newDate)
+            settingNotification(date: newDate, body: "")
         }
     }
 
