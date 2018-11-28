@@ -110,7 +110,7 @@ class TodoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let movie = searchController.isActive ? searchResults[indexPath.row] : ints[indexPath.row]
         
-        cell.iconImage.image = UIImage(named: "statics")
+        cell.iconImage.image = UIImage(named: "poeple_selected")
         cell.titleLable.text = movie + "事项"
         cell.contentLabel.text = "内容"
         //cell.tiltleLabel.text = "事项"
