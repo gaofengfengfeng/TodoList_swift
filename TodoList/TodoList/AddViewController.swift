@@ -71,37 +71,37 @@ class AddViewController: UIViewController, CLLocationManagerDelegate {
     @objc func image1Tapped(){
         changeImageViewBack(num: currentImage)
         currentImage = 1
-        image1.image = UIImage(named: "animal_selected")
+        image1.image = UIImage(named: "poeple_selected")
     }
     
     @objc func image2Tapped(){
         changeImageViewBack(num: currentImage)
         currentImage = 2
-        image2.image = UIImage(named: "finished_selected")
+        image2.image = UIImage(named: "shopping_selected")
     }
     
     @objc func image3Tapped(){
         changeImageViewBack(num: currentImage)
         currentImage = 3
-        image3.image = UIImage(named: "statics_selected")
+        image3.image = UIImage(named: "call_selected")
     }
     
     @objc func image4Tapped(){
         changeImageViewBack(num: currentImage)
         currentImage = 4
-        image4.image = UIImage(named: "todo_selected")
+        image4.image = UIImage(named: "plane_selected")
     }
     
     func changeImageViewBack(num: Int){
         switch num {
         case 1:
-            image1.image = UIImage(named: "animal")
+            image1.image = UIImage(named: "people")
         case 2:
-            image2.image = UIImage(named: "finished")
+            image2.image = UIImage(named: "shopping")
         case 3:
-            image3.image = UIImage(named: "statics")
+            image3.image = UIImage(named: "call")
         case 4:
-            image4.image = UIImage(named: "todo")
+            image4.image = UIImage(named: "plane")
         default:
             return
         }
@@ -124,6 +124,7 @@ class AddViewController: UIViewController, CLLocationManagerDelegate {
         
         let objectAnnotation = MKPointAnnotation()
         objectAnnotation.coordinate = currLocation.coordinate
+        
         objectAnnotation.title = "您的位置"
         map.addAnnotation(objectAnnotation)
 
@@ -132,11 +133,12 @@ class AddViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     
-    func LonLatToCity() {
+    func LonLatToCity(){
         let geocoder: CLGeocoder = CLGeocoder()
         
         geocoder.reverseGeocodeLocation(currLocation) { (placemarks, error) in
             print("地址：\(String(describing: placemarks?.first?.name))")
+            print(String(describing: placemarks?.first?.name))
         }
     }
 }
