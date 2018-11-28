@@ -19,6 +19,10 @@ class AddViewController: UIViewController, CLLocationManagerDelegate {
     
     var currentImage:Int = 1
     var content:String = ""
+    var address:String = ""
+    var longitude:Double = 0.0
+    var latitude:Double = 0.0
+
 
     @IBOutlet weak var image1: UIImageView!
     @IBOutlet weak var image2: UIImageView!
@@ -34,6 +38,13 @@ class AddViewController: UIViewController, CLLocationManagerDelegate {
         if let delegate = UIApplication.shared.delegate as? AppDelegate {
             delegate.settingNotification(date: date, body: content)
         }
+
+        //insert task
+        CoreDataManager.shared.insertTask(
+            name: content, date: date, status: 1, type: Int16(currentImage),
+            longitude: self.longitude,
+            latitude: self.latitude,
+            address: address)
     }
     
     override func viewDidLoad() {
@@ -127,6 +138,8 @@ class AddViewController: UIViewController, CLLocationManagerDelegate {
         objectAnnotation.title = "您的位置"
         map.addAnnotation(objectAnnotation)
 
+        self.longitude = Double(cntLocation.coordinate.longitude)
+        self.latitude = Double(cntLocation.coordinate.latitude)
         
         print("latitude: \(cntLocation.coordinate.latitude), longitude: \(cntLocation.coordinate.longitude)")
     }
@@ -136,7 +149,8 @@ class AddViewController: UIViewController, CLLocationManagerDelegate {
         let geocoder: CLGeocoder = CLGeocoder()
         
         geocoder.reverseGeocodeLocation(currLocation) { (placemarks, error) in
-            print("地址：\(String(describing: placemarks?.first?.name))")
+            self.address = String(describing: placemarks?.first?.name)
+            print("地址：\(self.address)")
         }
     }
 }

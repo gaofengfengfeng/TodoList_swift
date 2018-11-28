@@ -15,7 +15,9 @@ class TodoViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // 存储search之后的数据
     var searchResults : [String] = []
     var searchController : UISearchController!
-    
+    var taskArray:Array<Task> = []
+    var dateFormatter = DateFormatter()
+
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var editBtn: UIBarButtonItem!
@@ -25,6 +27,10 @@ class TodoViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        dateFormatter.dateFormat = "yyyy/MM/dd"
+
+        taskArray = CoreDataManager.shared.getAllTask();
         
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
@@ -63,7 +69,7 @@ class TodoViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchController.isActive ? searchResults.count : ints.count
+        return searchController.isActive ? searchResults.count : taskArray.count
         //return ints.count
     }
     
@@ -108,13 +114,12 @@ class TodoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! NewCellTableViewCell
         //cell.textLabel?.text = ints[indexPath.row]
         
-        let movie = searchController.isActive ? searchResults[indexPath.row] : ints[indexPath.row]
-        
+        //let movie = searchController.isActive ? searchResults[indexPath.row] : ints[indexPath.row]
+        let task = taskArray[indexPath.row]
         cell.iconImage.image = UIImage(named: "statics")
-        cell.titleLable.text = movie + "事项"
-        cell.contentLabel.text = "内容"
-        //cell.tiltleLabel.text = "事项"
-        //cell.contentLabel.text = "内容"
+        cell.titleLable.text = task.name
+        cell.contentLabel.text = dateFormatter.string(from:task.time!)
+       
         return cell
     }
     

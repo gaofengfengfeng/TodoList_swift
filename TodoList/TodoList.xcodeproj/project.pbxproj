@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C0DB9B821AE4EDF00289EB9 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C0DB9B521AE4EC300289EB9 /* Charts.framework */; };
+		4C0DB9B921AE4EDF00289EB9 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4C0DB9B521AE4EC300289EB9 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4C0DB9BD21AE693800289EB9 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0DB9BC21AE693800289EB9 /* CoreDataManager.swift */; };
+		4C0DB9C021AE69D600289EB9 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C0DB9BE21AE69D600289EB9 /* Model.xcdatamodeld */; };
 		67130E4921AC3ED9000583BC /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67130E4821AC3ED9000583BC /* AddViewController.swift */; };
 		67130E4B21ACCE90000583BC /* DoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67130E4A21ACCE90000583BC /* DoneViewController.swift */; };
 		67130E4D21ACD300000583BC /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67130E4C21ACD2FF000583BC /* Model.swift */; };
-		67130E5721AD41AF000583BC /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67130E5421AD4156000583BC /* Charts.framework */; };
-		67130E5821AD41AF000583BC /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 67130E5421AD4156000583BC /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		67130E5D21AD41E9000583BC /* StaticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67130E5C21AD41E9000583BC /* StaticsViewController.swift */; };
 		67130E5F21AD7314000583BC /* ModifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67130E5E21AD7314000583BC /* ModifyViewController.swift */; };
 		67380C3121AB880000288291 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67380C3021AB880000288291 /* AppDelegate.swift */; };
@@ -27,23 +29,23 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		67130E5321AD4156000583BC /* PBXContainerItemProxy */ = {
+		4C0DB9B421AE4EC300289EB9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 67130E4E21AD4156000583BC /* Charts.xcodeproj */;
+			containerPortal = 4C0DB9AF21AE4EC200289EB9 /* Charts.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 65AD9E95D9ED4DC0BD73A743;
 			remoteInfo = Charts;
 		};
-		67130E5521AD4156000583BC /* PBXContainerItemProxy */ = {
+		4C0DB9B621AE4EC300289EB9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 67130E4E21AD4156000583BC /* Charts.xcodeproj */;
+			containerPortal = 4C0DB9AF21AE4EC200289EB9 /* Charts.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 1CBBC58C6CE1EBEE9852CE41;
 			remoteInfo = ChartsTests;
 		};
-		67130E5921AD41AF000583BC /* PBXContainerItemProxy */ = {
+		4C0DB9BA21AE4EDF00289EB9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 67130E4E21AD4156000583BC /* Charts.xcodeproj */;
+			containerPortal = 4C0DB9AF21AE4EC200289EB9 /* Charts.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = A58A4ED274A941CA248EA921;
 			remoteInfo = Charts;
@@ -71,7 +73,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				67130E5821AD41AF000583BC /* Charts.framework in Embed Frameworks */,
+				4C0DB9B921AE4EDF00289EB9 /* Charts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -79,10 +81,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4C0DB9AF21AE4EC200289EB9 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = ../../Charts/Charts.xcodeproj; sourceTree = "<group>"; };
+		4C0DB9BC21AE693800289EB9 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		4C0DB9BF21AE69D600289EB9 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		67130E4821AC3ED9000583BC /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		67130E4A21ACCE90000583BC /* DoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneViewController.swift; sourceTree = "<group>"; };
 		67130E4C21ACD2FF000583BC /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		67130E4E21AD4156000583BC /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = ../../Charts/Charts.xcodeproj; sourceTree = "<group>"; };
 		67130E5C21AD41E9000583BC /* StaticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticsViewController.swift; sourceTree = "<group>"; };
 		67130E5E21AD7314000583BC /* ModifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyViewController.swift; sourceTree = "<group>"; };
 		67380C2D21AB880000288291 /* TodoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,7 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				67130E5721AD41AF000583BC /* Charts.framework in Frameworks */,
+				4C0DB9B821AE4EDF00289EB9 /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,11 +133,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		67130E4F21AD4156000583BC /* Products */ = {
+		4C0DB9B021AE4EC200289EB9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				67130E5421AD4156000583BC /* Charts.framework */,
-				67130E5621AD4156000583BC /* ChartsTests.xctest */,
+				4C0DB9B521AE4EC300289EB9 /* Charts.framework */,
+				4C0DB9B721AE4EC300289EB9 /* ChartsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -141,7 +145,7 @@
 		67380C2421AB87FF00288291 = {
 			isa = PBXGroup;
 			children = (
-				67130E4E21AD4156000583BC /* Charts.xcodeproj */,
+				4C0DB9AF21AE4EC200289EB9 /* Charts.xcodeproj */,
 				67380C2F21AB880000288291 /* TodoList */,
 				67380C4421AB880200288291 /* TodoListTests */,
 				67380C4F21AB880200288291 /* TodoListUITests */,
@@ -176,6 +180,8 @@
 				67130E4C21ACD2FF000583BC /* Model.swift */,
 				67130E5C21AD41E9000583BC /* StaticsViewController.swift */,
 				67130E5E21AD7314000583BC /* ModifyViewController.swift */,
+				4C0DB9BC21AE693800289EB9 /* CoreDataManager.swift */,
+				4C0DB9BE21AE69D600289EB9 /* Model.xcdatamodeld */,
 			);
 			path = TodoList;
 			sourceTree = "<group>";
@@ -213,7 +219,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				67130E5A21AD41AF000583BC /* PBXTargetDependency */,
+				4C0DB9BB21AE4EDF00289EB9 /* PBXTargetDependency */,
 			);
 			name = TodoList;
 			productName = TodoList;
@@ -292,8 +298,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 67130E4F21AD4156000583BC /* Products */;
-					ProjectRef = 67130E4E21AD4156000583BC /* Charts.xcodeproj */;
+					ProductGroup = 4C0DB9B021AE4EC200289EB9 /* Products */;
+					ProjectRef = 4C0DB9AF21AE4EC200289EB9 /* Charts.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -306,18 +312,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		67130E5421AD4156000583BC /* Charts.framework */ = {
+		4C0DB9B521AE4EC300289EB9 /* Charts.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Charts.framework;
-			remoteRef = 67130E5321AD4156000583BC /* PBXContainerItemProxy */;
+			remoteRef = 4C0DB9B421AE4EC300289EB9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		67130E5621AD4156000583BC /* ChartsTests.xctest */ = {
+		4C0DB9B721AE4EC300289EB9 /* ChartsTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = ChartsTests.xctest;
-			remoteRef = 67130E5521AD4156000583BC /* PBXContainerItemProxy */;
+			remoteRef = 4C0DB9B621AE4EC300289EB9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -363,6 +369,8 @@
 				67380C6A21ABC13100288291 /* NewCellTableViewCell.swift in Sources */,
 				67130E4B21ACCE90000583BC /* DoneViewController.swift in Sources */,
 				67130E5F21AD7314000583BC /* ModifyViewController.swift in Sources */,
+				4C0DB9BD21AE693800289EB9 /* CoreDataManager.swift in Sources */,
+				4C0DB9C021AE69D600289EB9 /* Model.xcdatamodeld in Sources */,
 				67380C3121AB880000288291 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -386,10 +394,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		67130E5A21AD41AF000583BC /* PBXTargetDependency */ = {
+		4C0DB9BB21AE4EDF00289EB9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Charts;
-			targetProxy = 67130E5921AD41AF000583BC /* PBXContainerItemProxy */;
+			targetProxy = 4C0DB9BA21AE4EDF00289EB9 /* PBXContainerItemProxy */;
 		};
 		67380C4321AB880200288291 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -693,6 +701,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4C0DB9BE21AE69D600289EB9 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4C0DB9BF21AE69D600289EB9 /* Model.xcdatamodel */,
+			);
+			currentVersion = 4C0DB9BF21AE69D600289EB9 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 67380C2521AB880000288291 /* Project object */;
 }
