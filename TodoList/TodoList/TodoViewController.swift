@@ -85,8 +85,9 @@ class TodoViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let actionDel = UIContextualAction(style: .destructive, title: "删除") { (action, view, finished) in
-            self.ints.remove(at: indexPath.row)
+            self.taskArray.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            //delet it in coredata
             finished(true)
         }
         
@@ -97,7 +98,7 @@ class TodoViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         let actionDel = UITableViewRowAction(style: .normal, title: "删除") { (_, indexPath) in
-            self.ints.remove(at: indexPath.row)
+            self.taskArray.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
         
@@ -113,7 +114,7 @@ class TodoViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //        let cell : CustomTableViewCell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell") as! CustomTableViewCell
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! NewCellTableViewCell
         //cell.textLabel?.text = ints[indexPath.row]
-        
+        print(indexPath)
         //let movie = searchController.isActive ? searchResults[indexPath.row] : ints[indexPath.row]
         let task = taskArray[indexPath.row]
         cell.iconImage.image = UIImage(named: "statics")
@@ -134,16 +135,16 @@ class TodoViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let fromRow = (sourceIndexPath as NSIndexPath).row
         let toRow = (destinationIndexPath as NSIndexPath).row
-        let int = ints[fromRow]
+        let task = taskArray[fromRow]
         
-        ints.remove(at: fromRow)
-        ints.insert(int, at: toRow)
+        taskArray.remove(at: fromRow)
+        taskArray.insert(task, at: toRow)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // 处理cell的点击事件
         self.tableView!.deselectRow(at: indexPath, animated: true)
-        let itemString = self.ints[indexPath.row]
+        let itemString = self.taskArray[indexPath.row]
         self.performSegue(withIdentifier: "ShowDetailView", sender: itemString)
     }
     
@@ -154,7 +155,7 @@ class TodoViewController: UIViewController, UITableViewDataSource, UITableViewDe
             controller.itemString = sender as? String
         }
     }
-    
+
     func searchFilter(text: String) {
         if text == "" {
             self.searchResults = ints

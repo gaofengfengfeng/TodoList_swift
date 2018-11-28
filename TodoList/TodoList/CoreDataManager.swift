@@ -60,7 +60,18 @@ class CoreDataManager: NSObject {
         saveContext()
     }
     
-    //get task by name
+    //get all task
+    func getAllTask() -> [Task] {
+        let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
+        do {
+            let result = try managedContext.fetch(fetchRequest)
+            return result
+        } catch {
+            fatalError();
+        }
+    }
+    
+    //query task by name
     func getTaskByName(name: String) -> [Task] {
         let fetRequest: NSFetchRequest = Task.fetchRequest();
         fetRequest.predicate = NSPredicate(format: "name == %@", name)
@@ -72,31 +83,42 @@ class CoreDataManager: NSObject {
         }
     }
     
-    //get tall task
-    func getAllTask() -> [Task] {
-        let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
+    
+    //query task by NSObjectID
+    func getTaskById(objectID: NSManagedObjectID) -> [Task] {
+        let fetRequest: NSFetchRequest = Task.fetchRequest();
+        fetRequest.predicate = NSPredicate(format: "task.objectID == %@", objectID)
         do {
-            let result = try managedContext.fetch(fetchRequest)
+            let result: [Task] = try managedContext.fetch(fetRequest)
             return result
         } catch {
             fatalError();
         }
     }
     
-    //modify task by name
-    func modifyTaskByName() {
-        //todo
+    //modify task by NSObjectID
+    func modifyTaskByID(objectID: NSManagedObjectID) {
+        let fetchRequest: NSFetchRequest = Task.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "task.objectID == %@", objectID)
+        do {
+            let result = try managedContext.fetch(fetchRequest)
+            for task in result {
+                //todo
+            }
+        } catch {
+            fatalError();
+        }
         saveContext()
     }
     
-    //delete task by name
-    func deleteTaskByName(name: String) {
+    //delete task by objectID
+    func deleteTaskByID(objectID: NSManagedObjectID){
         let fetchRequest: NSFetchRequest = Task.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "name == %@", name)
+        fetchRequest.predicate = NSPredicate(format: "task.objectID == %@", objectID)
         do {
             let result = try managedContext.fetch(fetchRequest)
-            for person in result {
-                managedContext.delete(person)
+            for task in result {
+                managedContext.delete(task)
             }
         } catch {
             fatalError();
