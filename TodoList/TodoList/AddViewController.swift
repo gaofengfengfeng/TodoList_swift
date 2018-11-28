@@ -7,8 +7,15 @@
 //
 
 import UIKit
+import LocalAuthentication
+import CoreLocation
+import MapKit
 
-class AddViewController: UIViewController {
+class AddViewController: UIViewController, CLLocationManagerDelegate {
+    
+    var locationManager: CLLocationManager = CLLocationManager()
+    var cntLocation: CLLocation!
+    var currLocation: CLLocation!
     
     var currentImage:Int = 1
     var content:String = ""
@@ -19,6 +26,7 @@ class AddViewController: UIViewController {
     @IBOutlet weak var image4: UIImageView!
     @IBOutlet weak var todoContent: UITextField!
     @IBOutlet weak var dataPicker: UIDatePicker!
+    @IBOutlet weak var map: MKMapView!
     
     @IBAction func doneBtn(_ sender: Any) {
         content = todoContent.text!
@@ -44,15 +52,21 @@ class AddViewController: UIViewController {
         image2.addGestureRecognizer(image2TapRecognition)
         image3.addGestureRecognizer(image3TapRecognition)
         image4.addGestureRecognizer(image4TapRecognition)
+        
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        cntLocation = nil
+        
+        map.showsUserLocation = true
+        
     }
     
-    @objc func imageTapped(recognizer: UITapGestureRecognizer) {
-        print("Image was tapped")
-        let thePoint = recognizer.location(in: view)
-        let theView = recognizer.view
-        print(thePoint)
-        print(theView!)
-    }
+//    @objc func imageTapped(recognizer: UITapGestureRecognizer) {
+//        let thePoint = recognizer.location(in: view)
+//        let theView = recognizer.view
+//    }
     
     @objc func image1Tapped(){
         changeImageViewBack(num: currentImage)
@@ -92,5 +106,37 @@ class AddViewController: UIViewController {
             return
         }
     }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if (locations.count == 0) { return }
+        let cntLocation = locations[locations.count - 1]
+        currLocation = locations.last!
+        LonLatToCity()
+        
+        map.mapType = MKMapType.standard
+        
+        let latDelta = 0.005
+        let longDelta = 0.005
+        let currentLocationSpan:MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: latDelta, longitudeDelta: longDelta)
+        
+        let currentRegion:MKCoordinateRegion = MKCoordinateRegion(center: currLocation.coordinate, span: currentLocationSpan)
+        map.setRegion(currentRegion, animated: true)
+        
+        let objectAnnotation = MKPointAnnotation()
+        objectAnnotation.coordinate = currLocation.coordinate
+        objectAnnotation.title = "您的位置"
+        map.addAnnotation(objectAnnotation)
 
+        
+        print("latitude: \(cntLocation.coordinate.latitude), longitude: \(cntLocation.coordinate.longitude)")
+    }
+    
+    
+    func LonLatToCity() {
+        let geocoder: CLGeocoder = CLGeocoder()
+        
+        geocoder.reverseGeocodeLocation(currLocation) { (placemarks, error) in
+            print("地址：\(String(describing: placemarks?.first?.name))")
+        }
+    }
 }
