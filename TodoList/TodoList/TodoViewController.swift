@@ -85,14 +85,20 @@ class TodoViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let actionDel = UIContextualAction(style: .destructive, title: "删除") { (action, view, finished) in
-            self.taskArray.remove(at: indexPath.row)
+            self.ints.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            //delet it in coredata
+            finished(true)
+        }
+        
+        let actionFinish = UIContextualAction(style: .normal, title: "完成") { (action, view, finished) in
+            self.ints.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
             finished(true)
         }
         
         actionDel.backgroundColor = UIColor.red
-        return UISwipeActionsConfiguration(actions: [actionDel])
+        actionFinish.backgroundColor = UIColor.lightGray
+        return UISwipeActionsConfiguration(actions: [actionDel, actionFinish])
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
