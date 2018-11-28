@@ -88,11 +88,20 @@ class TodoViewController: UIViewController, UITableViewDataSource, UITableViewDe
             tableView.deleteRows(at: [indexPath], with: .fade)
             //delet it in core data
             CoreDataManager.shared.deleteTask(objectID:task.objectID)
+            //self.ints.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            finished(true)
+        }
+        
+        let actionFinish = UIContextualAction(style: .normal, title: "完成") { (action, view, finished) in
+            //self.ints.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
             finished(true)
         }
         
         actionDel.backgroundColor = UIColor.red
-        return UISwipeActionsConfiguration(actions: [actionDel])
+        actionFinish.backgroundColor = UIColor.lightGray
+        return UISwipeActionsConfiguration(actions: [actionDel, actionFinish])
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
