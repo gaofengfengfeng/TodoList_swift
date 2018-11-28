@@ -60,6 +60,16 @@ class CoreDataManager: NSObject {
         saveContext()
     }
     
+    //insert data
+    func insertTask(name:String,date:Date,status:Int16,type:Int16){
+        let task = NSEntityDescription.insertNewObject(forEntityName: "Task", into: managedContext) as! Task
+        task.name = name
+        task.time = date
+        task.status = status
+        task.type = type
+        saveContext()
+    }
+    
     //get all task
     func getAllTask() -> [Task] {
         let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
@@ -97,31 +107,25 @@ class CoreDataManager: NSObject {
     }
     
     //modify task by NSObjectID
-    func modifyTaskByID(objectID: NSManagedObjectID) {
-        let fetchRequest: NSFetchRequest = Task.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "task.objectID == %@", objectID)
-        do {
-            let result = try managedContext.fetch(fetchRequest)
-            for task in result {
-                //todo
-            }
-        } catch {
-            fatalError();
+    func modifyTaskByID(objectID: NSManagedObjectID,newName:String,newTime:Date,newType:Int16) {
+        do{
+            let task = try managedContext.existingObject(with: objectID) as? Task
+            task?.name = newName
+            task?.time = newTime
+            task?.type = newType
+        }catch{
+            fatalError()
         }
         saveContext()
     }
     
     //delete task by objectID
-    func deleteTaskByID(objectID: NSManagedObjectID){
-        let fetchRequest: NSFetchRequest = Task.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "task.objectID == %@", objectID)
-        do {
-            let result = try managedContext.fetch(fetchRequest)
-            for task in result {
-                managedContext.delete(task)
-            }
-        } catch {
-            fatalError();
+    func deleteTask(objectID: NSManagedObjectID){
+        do{
+            let task = try managedContext.existingObject(with: objectID)
+            managedContext.delete(task)
+        }catch {
+            fatalError()
         }
         saveContext()
     }

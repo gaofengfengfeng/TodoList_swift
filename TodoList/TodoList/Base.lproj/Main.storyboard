@@ -46,6 +46,7 @@
                                 <state key="normal" title="修改"/>
                                 <connections>
                                     <action selector="modifyBtn:" destination="vxM-sv-GSa" eventType="touchUpInside" id="GHx-aI-SOX"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="yIH-Iy-vt2"/>
                                 </connections>
                             </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="bDa-7V-rbT">
@@ -63,16 +64,16 @@
                                             <constraint firstAttribute="height" constant="60" id="aFU-ya-2kB"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="call" translatesAutoresizingMaskIntoConstraints="NO" id="VIG-6v-DTP">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shopping" translatesAutoresizingMaskIntoConstraints="NO" id="eKj-MI-0e3" userLabel="Image2">
                                         <rect key="frame" x="85" y="0.0" width="60" height="60"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="60" id="Sx6-RL-c50"/>
+                                            <constraint firstAttribute="width" constant="60" id="hFL-WY-Jnd"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shopping" translatesAutoresizingMaskIntoConstraints="NO" id="eKj-MI-0e3">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="call" translatesAutoresizingMaskIntoConstraints="NO" id="VIG-6v-DTP" userLabel="Image3">
                                         <rect key="frame" x="170" y="0.0" width="60" height="60"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="60" id="hFL-WY-Jnd"/>
+                                            <constraint firstAttribute="width" constant="60" id="Sx6-RL-c50"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plane" translatesAutoresizingMaskIntoConstraints="NO" id="Nyc-fv-5xV">
@@ -91,7 +92,10 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="datePicker" destination="96n-Sb-0HJ" id="vBc-of-bYM"/>
-                        <outlet property="image4" destination="Nyc-fv-5xV" id="BGk-XS-S9i"/>
+                        <outlet property="image1" destination="xzl-DB-9hp" id="bhh-T1-q4h"/>
+                        <outlet property="image2" destination="eKj-MI-0e3" id="4ko-RJ-J9Q"/>
+                        <outlet property="image3" destination="VIG-6v-DTP" id="dsJ-Yd-YVH"/>
+                        <outlet property="image4" destination="Nyc-fv-5xV" id="IWF-gf-Nuh"/>
                         <outlet property="map" destination="bDa-7V-rbT" id="alu-TW-61N"/>
                         <outlet property="todoContent" destination="m5t-K0-KkJ" id="Qv6-6d-jpn"/>
                     </connections>
@@ -116,7 +120,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BEC-3h-RK9">
-                                <rect key="frame" x="10" y="97" width="394" height="755"/>
+                                <rect key="frame" x="10" y="97" width="394" height="706"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -461,6 +465,6 @@
         <image name="todo_selected" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="a6n-aF-XJU"/>
+        <segue reference="yIH-Iy-vt2"/>
     </inferredMetricsTieBreakers>
 </document>

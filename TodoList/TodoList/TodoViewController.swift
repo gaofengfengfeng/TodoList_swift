@@ -11,9 +11,9 @@ import UIKit
 class TodoViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating {
     
     // mock假数据
-    var ints : [String] = ["1","2","3","4","5","6","7","8","9","10"]
+    //var ints : [String] = ["1","2","3","4","5","6","7","8","9","10"]
     // 存储search之后的数据
-    var searchResults : [String] = []
+    var searchResults:Array<Task> = []
     var searchController : UISearchController!
     var taskArray:Array<Task> = []
     var dateFormatter = DateFormatter()
@@ -70,7 +70,6 @@ class TodoViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchController.isActive ? searchResults.count : taskArray.count
-        //return ints.count
     }
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -85,9 +84,10 @@ class TodoViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let actionDel = UIContextualAction(style: .destructive, title: "删除") { (action, view, finished) in
-            self.taskArray.remove(at: indexPath.row)
+            let task = self.taskArray.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            //delet it in coredata
+            //delet it in core data
+            CoreDataManager.shared.deleteTask(objectID:task.objectID)
             finished(true)
         }
         
@@ -98,8 +98,10 @@ class TodoViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         let actionDel = UITableViewRowAction(style: .normal, title: "删除") { (_, indexPath) in
-            self.taskArray.remove(at: indexPath.row)
+            let task = self.taskArray.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            //delete data in core data
+            CoreDataManager.shared.deleteTask(objectID:task.objectID)
         }
         
         actionDel.backgroundColor = UIColor.red
@@ -111,12 +113,10 @@ class TodoViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell : CustomTableViewCell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell") as! CustomTableViewCell
+
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! NewCellTableViewCell
-        //cell.textLabel?.text = ints[indexPath.row]
         print(indexPath)
-        //let movie = searchController.isActive ? searchResults[indexPath.row] : ints[indexPath.row]
-        let task = taskArray[indexPath.row]
+        let task = searchController.isActive ? searchResults[indexPath.row] : taskArray[indexPath.row]
         cell.iconImage.image = UIImage(named: "statics")
         cell.titleLable.text = task.name
         cell.contentLabel.text = dateFormatter.string(from:task.time!)
@@ -144,25 +144,25 @@ class TodoViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // 处理cell的点击事件
         self.tableView!.deselectRow(at: indexPath, animated: true)
-        let itemString = self.taskArray[indexPath.row]
-        self.performSegue(withIdentifier: "ShowDetailView", sender: itemString)
+        let task = self.taskArray[indexPath.row]
+        self.performSegue(withIdentifier: "ShowDetailView", sender: task)
     }
     
     //在这个方法中给新页面传递参数
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowDetailView"{
             let controller = segue.destination as! ModifyViewController
-            controller.itemString = sender as? String
+            controller.task = sender as? Task
         }
     }
 
     func searchFilter(text: String) {
         if text == "" {
-            self.searchResults = ints
+            self.searchResults = taskArray
             return
         }
-        self.searchResults = ints.filter({ (movie) -> Bool in
-            return movie.localizedCaseInsensitiveContains(text)
+        self.searchResults = taskArray.filter({ (task) -> Bool in
+            return task.name!.localizedCaseInsensitiveContains(text)
         })
     }
     
