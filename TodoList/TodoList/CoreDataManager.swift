@@ -13,10 +13,15 @@ class CoreDataManager: NSObject {
     
     static let shared  = CoreDataManager(modelName:"Model")
     
+    let dateFormatter = DateFormatter()
+    var initDate:Date
+    
     private let modelName: String
     
     init(modelName: String) {
         self.modelName = modelName
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        initDate = dateFormatter.date(from: "1970-01-01 00:00:00")!
     }
     
     lazy var storeContainer: NSPersistentContainer = {
@@ -57,6 +62,7 @@ class CoreDataManager: NSObject {
         task.longitude = longitude
         task.latitude = latitude
         task.address = address
+        task.top = initDate
         saveContext()
     }
     
@@ -102,7 +108,19 @@ class CoreDataManager: NSObject {
             let result: [Task] = try managedContext.fetch(fetRequest)
             return result
         } catch {
-            fatalError();
+            fatalError()
+        }
+    }
+    
+    //query task by status
+    func getTaskByStatus(status:Int16) -> [Task] {
+        let fetRequest: NSFetchRequest = Task.fetchRequest()
+        fetRequest.predicate = NSPredicate(format: "status == %d", status)
+        do{
+            let result: [Task] = try managedContext.fetch(fetRequest)
+            return result
+        }catch{
+            fatalError()
         }
     }
     
@@ -118,6 +136,29 @@ class CoreDataManager: NSObject {
         }
         saveContext()
     }
+    
+    //modify task by NSObjectID
+    func updateTaskStatusByID(objectID: NSManagedObjectID,newStatus: Int16) {
+        do{
+            let task = try managedContext.existingObject(with: objectID) as? Task
+            task?.status = newStatus
+        }catch{
+            fatalError()
+        }
+        saveContext()
+    }
+    
+    //update task top time by NSObjectID
+    func updateTaskTopByID(objectID: NSManagedObjectID,newTop:Date) {
+        do{
+            let task = try managedContext.existingObject(with: objectID) as? Task
+            task?.top = newTop
+        }catch{
+            fatalError()
+        }
+        saveContext()
+    }
+    
     
     //delete task by objectID
     func deleteTask(objectID: NSManagedObjectID){

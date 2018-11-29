@@ -27,10 +27,14 @@ class TodoViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("Documents Directory: ", FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last ?? "Not Found!")
+
         dateFormatter.dateFormat = "yyyy/MM/dd"
 
-        taskArray = CoreDataManager.shared.getAllTask();
+        taskArray = CoreDataManager.shared.getTaskByStatus(status: 1);
+        taskArray.sort { (task1, task2) -> Bool in
+            return task1.top! > task2.top!
+        }
         
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
@@ -74,8 +78,10 @@ class TodoViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let actionTop = UIContextualAction(style: .normal, title: "置顶") { (action, view, finished) in
+            let task = self.taskArray[indexPath.row]
             let first = IndexPath(row: 0, section: 0)
             tableView.moveRow(at: indexPath, to: first)
+            CoreDataManager.shared.updateTaskTopByID(objectID: task.objectID, newTop: Date())
             finished(true)
         }
         actionTop.backgroundColor = UIColor.orange
@@ -88,14 +94,14 @@ class TodoViewController: UIViewController, UITableViewDataSource, UITableViewDe
             tableView.deleteRows(at: [indexPath], with: .fade)
             //delet it in core data
             CoreDataManager.shared.deleteTask(objectID:task.objectID)
-            //self.ints.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
             finished(true)
         }
         
         let actionFinish = UIContextualAction(style: .normal, title: "完成") { (action, view, finished) in
-            //self.ints.remove(at: indexPath.row)
+            let task = self.taskArray.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            //update task status in core data
+            CoreDataManager.shared.updateTaskStatusByID(objectID: task.objectID, newStatus: 2)
             finished(true)
         }
         

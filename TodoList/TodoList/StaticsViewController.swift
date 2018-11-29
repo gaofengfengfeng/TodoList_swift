@@ -9,26 +9,27 @@
 import UIKit
 import Charts
 
-class StaticsViewController: UIViewController {
+class StaticsViewController: UIViewController,UITabBarControllerDelegate {
     
     //折线图
     var chartView: LineChartView!
     var pieChart: PieChartView!
     
-    let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
-    let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0]
-    
-    let state = ["已完成", "未完成"]
-    let values = [88, 12]
-
     @IBOutlet weak var chart1: UIView!
     @IBOutlet weak var chart2: UIView!
     @IBOutlet weak var completeProbability: UILabel!
     @IBOutlet weak var bestDay: UILabel!
     
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if tabBarController.selectedIndex == 2 {
+            setChart()
+            setLineChar()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         //创建折线图组件对象
         chartView = LineChartView()
@@ -45,17 +46,26 @@ class StaticsViewController: UIViewController {
         pieChart.entryLabelFont = UIFont.systemFont(ofSize: 10);//区块文本的字体
         pieChart.entryLabelColor = UIColor.black;
         
-        setChart(dataPoints: state, values: values)
+        setChart()
         setLineChar()
         
+        // 代理tabBarController
+        self.tabBarController?.delegate = self
     }
     
-    func setChart(dataPoints: [String], values: [Int]) {
+
+    func setChart() {
         
         //let titles = ["红","黄","蓝色","橙","绿"];
         //let yData = [20,30,10,40,60];
+        //initial data
+        let arrayTaskDone = CoreDataManager.shared.getTaskByStatus(status: 2)
+        let arrayTaskToDo = CoreDataManager.shared.getTaskByStatus(status: 1)
+        let completionRate = Double(arrayTaskDone.count) / Double(arrayTaskDone.count + arrayTaskToDo.count) * 100
+        print(completionRate)
+        completeProbability.text = String(format: "%.1f%%", completionRate)
         let titles = ["已完成","未完成"];
-        let yData = [88,12];
+        let yData = [arrayTaskDone.count,arrayTaskToDo.count];
         var yVals = [PieChartDataEntry]();
         for i in 0...titles.count-1 {
             let entry = PieChartDataEntry.init(value: Double(yData[i]), label: titles[i]);
@@ -91,15 +101,28 @@ class StaticsViewController: UIViewController {
         //let xValues = ["x1","x2","x3","x4","x5","x6","x7","x8","x9","x10","x11","x12"];
         
         let xValues = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
-        let yValues = [10, 12, 0, 5, 1, 2, 20]
+        var yValues = [0, 0, 0, 0, 0, 0, 0]
+        
+        let taskArray = CoreDataManager.shared.getTaskByStatus(status: 2)
+        
+        for task in taskArray{
+            let dayOfWeek = getDayOfWeek(task.time!)!
+            var index = dayOfWeek-2
+            if index < 0{
+                index = 6
+            }
+            yValues[index] =  yValues[index] + 1
+        }
         
         //chartView.xAxis.valueFormatter = IAxisValueFormatter.init(xValues as NSArray);
         //chartView.leftAxis.valueFormatter = IAxisValueFormatter.init();
         
+        bestDay.text = getTheBest(values: yValues)
+        
         var yDataArray1 = [ChartDataEntry]();
         for i in 0...xValues.count-1 {
             //let y = arc4random()%500;
-            let entry = ChartDataEntry.init(x: Double(i), y: Double(yValues[i]));
+            let entry = ChartDataEntry.init(x: Double(i+1), y: Double(yValues[i]));
             
             yDataArray1.append(entry);
         }
@@ -126,6 +149,41 @@ class StaticsViewController: UIViewController {
         
         chartView.data = data;
         chartView.animate(xAxisDuration: 1.0, yAxisDuration: 1.0, easingOption: .easeInBack);
+        
     }
-
+    
+    //周日是第一天
+    func getDayOfWeek(_ todayDate:Date) -> Int? {
+        let myCalendar = Calendar(identifier: .gregorian)
+        let weekDay = myCalendar.component(.weekday, from: todayDate)
+        return weekDay
+    }
+    
+    //best day
+    func getTheBest(values: [Int]) -> String {
+        var index = 0
+        for i in 1...values.count-1 {
+            if(values[i] > values[index]){
+                index = i
+            }
+        }
+        switch index {
+        case 0:
+            return "周一"
+        case 1:
+            return "周二"
+        case 2:
+            return "周三"
+        case 3:
+            return "周四"
+        case 4:
+            return "周五"
+        case 5:
+            return "周六"
+        case 6:
+            return "周日"
+        default:
+            return "???"
+        }
+    }
 }
