@@ -47,6 +47,7 @@ class DoneViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func setupSectionDic() {
+        var taskArrayToDay: Array<Task> = []
         var taskArrayDayBefore: Array<Task> = []
         var taskArrayThreeDayBefore: Array<Task> = []
         var taskArrayWeekBefore: Array<Task> = []
@@ -56,8 +57,10 @@ class DoneViewController: UIViewController, UITableViewDataSource, UITableViewDe
         //sort the taskArray by time
         for task in taskArray{
             let diff = dayDifference(toDate: task.time!)
-            print(diff)
-            if diff < 0 && diff >= -1{
+            if diff == 0{
+                //今天
+                taskArrayToDay.append(task)
+            }else if diff < 0 && diff >= -1{
                 //一天前
                 taskArrayDayBefore.append(task)
             }else if diff < -1 && diff >= -3 {
@@ -72,7 +75,7 @@ class DoneViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
         }
         
-       sectionDic = ["一天前": taskArrayDayBefore, "三天前": taskArrayThreeDayBefore, "一周前":taskArrayWeekBefore, "更早": taskArrayEarlier]
+        sectionDic = ["今天":taskArrayToDay,"一天前": taskArrayDayBefore, "三天前": taskArrayThreeDayBefore, "一周前":taskArrayWeekBefore, "更早": taskArrayEarlier]
     }
     
     func dayDifference(toDate: Date) -> Int {
