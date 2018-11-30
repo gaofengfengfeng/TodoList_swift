@@ -10,8 +10,7 @@ import UIKit
 
 class DoneViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating,UITabBarControllerDelegate {
     
-    let sections = Model.sections
-    let indexes = Model.indexes
+    let sections = ["今天","一天前","三天前","一周前", "更早"]
     var sectionDic:[String:[Task]] = [:]
     var dateFormatter = DateFormatter()
     

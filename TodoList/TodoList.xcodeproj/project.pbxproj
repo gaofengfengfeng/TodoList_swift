@@ -13,7 +13,6 @@
 		4C0DB9C021AE69D600289EB9 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C0DB9BE21AE69D600289EB9 /* Model.xcdatamodeld */; };
 		67130E4921AC3ED9000583BC /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67130E4821AC3ED9000583BC /* AddViewController.swift */; };
 		67130E4B21ACCE90000583BC /* DoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67130E4A21ACCE90000583BC /* DoneViewController.swift */; };
-		67130E4D21ACD300000583BC /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67130E4C21ACD2FF000583BC /* Model.swift */; };
 		67130E5D21AD41E9000583BC /* StaticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67130E5C21AD41E9000583BC /* StaticsViewController.swift */; };
 		67130E5F21AD7314000583BC /* ModifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67130E5E21AD7314000583BC /* ModifyViewController.swift */; };
 		67380C3121AB880000288291 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67380C3021AB880000288291 /* AppDelegate.swift */; };
@@ -86,7 +85,6 @@
 		4C0DB9BF21AE69D600289EB9 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		67130E4821AC3ED9000583BC /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		67130E4A21ACCE90000583BC /* DoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneViewController.swift; sourceTree = "<group>"; };
-		67130E4C21ACD2FF000583BC /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		67130E5C21AD41E9000583BC /* StaticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticsViewController.swift; sourceTree = "<group>"; };
 		67130E5E21AD7314000583BC /* ModifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyViewController.swift; sourceTree = "<group>"; };
 		67380C2D21AB880000288291 /* TodoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -177,7 +175,6 @@
 				67380C6921ABC13100288291 /* NewCellTableViewCell.xib */,
 				67130E4821AC3ED9000583BC /* AddViewController.swift */,
 				67130E4A21ACCE90000583BC /* DoneViewController.swift */,
-				67130E4C21ACD2FF000583BC /* Model.swift */,
 				67130E5C21AD41E9000583BC /* StaticsViewController.swift */,
 				67130E5E21AD7314000583BC /* ModifyViewController.swift */,
 				4C0DB9BC21AE693800289EB9 /* CoreDataManager.swift */,
@@ -362,7 +359,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				67130E5D21AD41E9000583BC /* StaticsViewController.swift in Sources */,
-				67130E4D21ACD300000583BC /* Model.swift in Sources */,
 				67130E4921AC3ED9000583BC /* AddViewController.swift in Sources */,
 				67380C3321AB880000288291 /* ViewController.swift in Sources */,
 				67380C5F21AB91FD00288291 /* TodoViewController.swift in Sources */,
