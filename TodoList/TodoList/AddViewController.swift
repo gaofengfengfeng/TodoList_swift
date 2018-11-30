@@ -150,7 +150,7 @@ class AddViewController: UIViewController, CLLocationManagerDelegate {
         let geocoder: CLGeocoder = CLGeocoder()
         
         geocoder.reverseGeocodeLocation(currLocation) { (placemarks, error) in
-            self.address = String(describing: placemarks?.first?.name)
+            self.address = String(describing: (placemarks?.first?.name!)!)
             print("地址：\(self.address)")
             print(String(describing: placemarks?.first?.name))
         }

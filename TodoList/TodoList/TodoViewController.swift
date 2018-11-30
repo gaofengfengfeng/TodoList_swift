@@ -132,11 +132,21 @@ class TodoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! NewCellTableViewCell
         print(indexPath)
         let task = searchController.isActive ? searchResults[indexPath.row] : taskArray[indexPath.row]
-        cell.iconImage.image = UIImage(named: "statics")
+        cell.iconImage.image = getUIImage(image: task.type)
         cell.titleLable.text = task.name
         cell.contentLabel.text = dateFormatter.string(from:task.time!)
        
         return cell
+    }
+    
+    func getUIImage(image: Int16) -> UIImage {
+        switch image {
+        case 1: return UIImage(named: "poeple_selected")!
+        case 2: return UIImage(named: "shopping_selected")!
+        case 3: return UIImage(named: "call_selected")!
+        case 4: return UIImage(named: "plane_selected")!
+        default: return UIImage(named: "statics_selected")!
+        }
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
